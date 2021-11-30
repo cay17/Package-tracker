@@ -1,0 +1,57 @@
+<div class="mt-5">
+    <div class="w-100">
+        <div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2>Create Package</h2>
+            </div>
+            <form (ngSubmit)="submit(f);" #f="ngForm" novalidate>
+              <div class="form-group">
+                <input type="number" class="form-control" placeholder="Weight" name="weight" ngModel>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" placeholder="Width" name="width" ngModel>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" placeholder="Height" name="height" ngModel>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" placeholder="Depth" name="depth" ngModel>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="From name" name="from_name" ngModel>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="From address" name="from_address" ngModel>
+              </div>
+              <div class="row form-group">
+                <div class="col">
+                  <input type="number" class="form-control" placeholder="From Lat" name="from_location.lat" ngModel>
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control" placeholder="From Lng"  name="from_location.lng" ngModel>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="To name" name="to_name" ngModel>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="To address"  name="to_address" ngModel>
+              </div>
+              <div class="row form-group">
+                <div class="col">
+                  <input type="number" class="form-control" placeholder="To Lat"  name="to_location.lat" ngModel>
+                </div>
+                <div class="col">
+                  <input type="number" class="form-control" placeholder="To Lng" name="to_location.lng" ngModel>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea name="description" placeholder="Description" id="" cols="30" rows="10" class="form-control"  name="description" ngModel></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>

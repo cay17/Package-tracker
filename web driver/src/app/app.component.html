@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <form class="w-100 d-flex container" (ngSubmit)="searchPackage(f);" #f="ngForm" novalidate>
+    <input  class="form-control" type="text" name="package_id" placeholder="Enter package id" class="mr-3 w-100" ngModel>
+    <button class="btn btn-primary m-0" type="submit">Track</button>
+  </form>
+  <div class="d-flex mt-5">
+      <div class="w-25">
+          <div>
+              <h2>Package Details</h2>
+              Weight: {{ package.weight }}<br><br>
+              Width: {{ package.width }}<br><br>
+              Height: {{ package.height }}<br><br>
+              Depth: {{ package.depth }}<br><br>
+              From: {{ package.from_name }}, {{ package.from_address }}<br><br>
+              To: {{ package.to_name }}, {{ package.to_address }}<br><br>
+          </div>
+          <div>
+              <h2>Delivery Details</h2>
+              Pickup time: {{ delivery.pickup_time }}<br><br>
+              Start time: {{ delivery.start_time }}<br><br>
+              End time: {{ delivery.end_time }}<br><br>
+              Status: {{ delivery.status }}<br><br>
+          </div>
+      </div>
+      <div class="w-auto ml-4">
+        <google-map class="">
+          <map-marker
+            *ngIf="package.from_location"
+            [position]="package.from_location"
+            label="Départ"
+          >
+          </map-marker>
+          <map-marker
+            *ngIf="package.to_location"
+            [position]="package.to_location"
+            label="Arrivé"
+          >
+          </map-marker>
+          <map-marker
+            *ngIf="delivery.location"
+            [position]="delivery.location"
+            label="actuel"
+          >
+          </map-marker>
+        </google-map>
+      </div>
+        <div class="w-15 ml-5">
+          <button (click)="changeStatus(StatusEnum.pickedup)" [disabled]="delivery.status !== 'open'" class="btn btn-block btn-primary">Picked-up</button>
+          <button (click)="changeStatus(StatusEnum.inTransit)" [disabled]="delivery.status !== 'picked-up'" class="btn btn-block btn-warning">In-transit</button>
+          <button (click)="changeStatus(StatusEnum.delivered)" [disabled]="delivery.status !== 'in-transit'" class="btn btn-block btn-success">Delivered</button>
+          <button (click)="changeStatus(StatusEnum.failed)" [disabled]="delivery.status !== 'in-transit'" class="btn btn-block btn-danger">Failed</button>
+        </div>
+  </div>
+</div>

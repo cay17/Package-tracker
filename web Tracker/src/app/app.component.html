@@ -1,0 +1,44 @@
+<form class="flex" (ngSubmit)="searchPackage(f);" #f="ngForm" novalidate>
+    <input type="text" name="package_id" placeholder="Enter package id" class="mr-3" ngModel>
+    <button type="submit">Track</button>
+</form>
+<div class="flex mt-5">
+    <div class="w-30">
+        <div>
+            <h2>Package Details</h2>
+            Weight: {{ package.weight }}<br><br>
+            Width: {{ package.width }}<br><br>
+            Height: {{ package.height }}<br><br>
+            Depth: {{ package.depth }}<br><br>
+            From: {{ package.from_name }}, {{ package.from_address }}<br><br>
+            To: {{ package.to_name }}, {{ package.to_address }}<br><br>
+        </div>
+        <div>
+            <h2>Delivery Details</h2>
+            Pickup time: {{ delivery.pickup_time }}<br><br>
+            Start time: {{ delivery.start_time }}<br><br>
+            End time: {{ delivery.end_time }}<br><br>
+            Status: {{ delivery.status }}<br><br>
+        </div>
+    </div>
+      <google-map class="w-100 maps">
+        <map-marker
+          *ngIf="package.from_location"
+          [position]="package.from_location"
+          label="Départ"
+        >
+        </map-marker>
+        <map-marker
+          *ngIf="package.to_location"
+          [position]="package.to_location"
+          label="Arrivé"
+        >
+        </map-marker>
+        <map-marker
+          *ngIf="delivery.location"
+          [position]="delivery.location"
+          label="actuel"
+        >
+        </map-marker>
+      </google-map>
+</div>

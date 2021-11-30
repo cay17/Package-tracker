@@ -1,0 +1,43 @@
+.flex{
+    display: flex;
+}
+
+.mr-3{
+    margin-right: 0.5rem
+}
+
+button{
+    font-size: .8em;
+    margin: 0;
+    padding: 15px 40px;
+    background-color: rgb(143, 187, 77);
+    box-shadow: 1px 2px 3px grey;
+    border: none;
+}
+
+
+.content-center{
+    justify-content: center;
+    align-items: center;
+}
+
+
+.w-30{
+    width: 30%;
+}
+
+
+.w-70{
+    width: 70%;
+}
+
+.maps{
+    background-color: grey;
+    min-height: 450px;
+    border-radius: 5px;
+    min-width: 700px;
+}
+
+.mt-5{
+    margin-top: 3rem;
+}
