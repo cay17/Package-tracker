@@ -16,7 +16,7 @@ import * as io from 'socket.io-client';
 export class AppComponent implements OnInit {
 
   searchForm: any;
-  socket: any = io.connect('http://localhost:3000/');
+  socket: any;
   title = 'Package';
   package_id: String = '';
   package: any = {}
@@ -25,11 +25,18 @@ export class AppComponent implements OnInit {
   constructor(private httpClient: HttpClient, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.socket.on('delivery_updated', (delivery: any) => {
-      if(delivery._id === this.delivery._id) {
-        this.delivery = delivery
+    this.socket = new WebSocket('ws://localhost:3000/ws');
+    this.socket.onmessage = (msg: any) => {
+      console.log(msg)
+      const message = JSON.parse(msg.data)
+      if (message.event === "delivery_updated") {
+        if (message.delivery_object._id === this.delivery._id) {
+          this.delivery = message.delivery_object
+          this.delivery.location.lat = parseFloat(this.delivery.location.lat)
+          this.delivery.location.lng = parseFloat(this.delivery.location.lng)
+        }
       }
-    })
+    }
   }
 
   initForm () {
